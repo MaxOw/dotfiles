@@ -1,0 +1,52 @@
+"3.1 (created: 2011/04/21 23:26:46)
+
+highlight Hint font-family: monospace; font-size: 10px; font-weight: bold; text-transform: uppercase; color: white; background-color: red; border-color: ButtonShadow; border-width: 0px; border-style: solid; padding: 0px 1px 0px 1px; text-transform: lowercase
+nnoremap J gT
+nnoremap K gt
+nnoremap <C-A-j> :tabm! -1<CR>
+nnoremap <C-A-k> :tabm! +1<CR>
+set tabnumbers
+set hintchars=jfkdls;ahgurieow
+set runtimepath=/home/max/.vimperator
+autocmd LocationChange .* :set editor="gnome-terminal --disable-factory -x vim"
+source! /home/max/.vimperatorrc.local
+set gui=nonavigation
+
+set hinttags="//input[not(@type='hidden' or @disabled)] | //xhtml:input[not(@type='hidden')] | //a[string(@href)] | //xhtml:a[string(@href)] | //area | //xhtml:area | //iframe | //xhtml:iframe | //textarea | //xhtml:textarea | //button | //xhtml:button | //select | //xhtml:select | //*[@onclick or @onmouseover or @onmousedown or @onmouseup or @oncommand or @role='link'or @role='button' or @role='checkbox' or @role='combobox' or @role='listbox' or @role='listitem' or @role='menuitem' or @role='menuitemcheckbox' or @role='menuitemradio' or @role='option' or @role='radio' or @role='scrollbar' or @role='slider' or @role='spinbutton' or @role='tab' or @role='textbox' or @role='treeitem' or @tabindex]"
+
+" vim: set ft=vimperator:
+
+"javascript to hide statusbar
+noremap <silent> <F8> :js toggle_bottombar()<CR>
+"noremap : :js toggle_bottombar('on')<CR>:
+"noremap o :js toggle_bottombar('on')<CR>o
+"noremap O :js toggle_bottombar('on')<CR>O
+"noremap t :js toggle_bottombar('on')<CR>t
+"noremap T :js toggle_bottombar('on')<CR>T
+"noremap f :js toggle_bottombar('on')<CR>f
+"noremap F :js toggle_bottombar('on')<CR>F
+"noremap / :js toggle_bottombar('on')<CR>/
+"cnoremap <CR> <CR>:js toggle_bottombar('off')<CR>
+"cnoremap <Esc> <Esc>:js toggle_bottombar('off')<CR>
+"cnoremap <Esc> :js toggle_bottombar('off')
+
+:js << EOF
+function toggle_bottombar(p) {
+    var bb = document.getElementById('liberator-bottombar');
+    if (!bb)
+        return;
+    if (p == 'on'){
+        bb.style.height = '';
+        bb.style.overflow = '';
+        return;
+    }
+    if (p == 'off'){
+        bb.style.height = '0px';
+        bb.style.overflow = 'hidden';
+        return;
+    }
+    bb.style.height = (bb.style.height == '') ? '0px' : '';
+    bb.style.overflow = (bb.style.height == '') ? '' : 'hidden';
+}
+EOF
+"toggle_bottombar();

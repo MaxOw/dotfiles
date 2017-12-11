@@ -1,0 +1,16 @@
+[user]
+	name = Maksymilian Owsianny
+	email = Maksymilian.Owsianny@gmail.com
+[core]
+	editor = vim
+	askpass = 
+[color]
+	status = auto
+	branch = auto
+	diff = auto
+[http]
+	sslcainfo = /etc/ssl/certs/ca-certificates.crt
+[push]
+	default = current
+[alias]
+	lg = log --oneline -n5
