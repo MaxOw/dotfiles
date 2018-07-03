@@ -3,7 +3,7 @@
 
 ## System installation
 
-1. Boot
+### 1. Boot
 
   The Cortechs USB Drive has NixOS 18.03 image boot from that or burn
   another one.
@@ -17,14 +17,14 @@
   You can also access manual at virtual console 8: Alt+F8 or by running
   nixos-help
 
-2. Log-in as root with empty password
+### 2. Log-in as root with empty password
 
-3. Setup network/wifi:
+### 3. Setup network/wifi:
 
   > ip a # to check network interface name
   > wpa_supplicant -B -i interface -c <(wpa_passphrase 'SSID' 'key')
 
-4. Disk formatting & partitioning
+### 4. Disk formatting & partitioning
 
   > fdisk -l # To list partitions
   this should show
@@ -39,17 +39,17 @@
   > Command: p # to print partitions
 
   > Command: d # to delete partition
-  > # You will be prompted for partition numbers
-  > # delete them all one by one
+  You will be prompted for partition numbers
+  delete them all one by one
 
-  > # Create EFI boot partition
+  Create EFI boot partition
   > Command: n
   > Partition number: 1
   > First sector: <enter for default>
   > Last sector: +500M
   > Hex code or GUID: ef00
 
-  > # Create LVM partition
+  Create LVM partition
   > Command: n
   > Partition number: 1
   > First sector: <enter for default>
@@ -58,56 +58,56 @@
 
   > Command: w # to save & exit
 
-4a. Setting up encryption (optional)
+### 4a. Setting up encryption (optional)
 
   > cryptsetup luksFormat $LVM_PARTITION
-  > # you will have to enter decryption pass phrase here
-  > # (can be changed later)
+  you will have to enter decryption pass phrase here
+  (can be changed later)
 
   > cryptsetup luksOpen $LVM_PARTITION nixos-enc
 
-  > # Create physical LVM volume using nixos-enc
+  Create physical LVM volume using nixos-enc
   > pvcreate /dev/mapper/nixos-enc
 
-  > # Create volume group containing swap and root partitions
+  Create volume group containing swap and root partitions
   > vgcreate vg /dev/mapper/nixos-enc
 
-4b. Without encryption do this instead:
+### 4b. Without encryption do this instead:
 
   > pvcreate $LVM_PARTITION
   > vgcreate vg $LVM_PARTITION
 
-5. Creating logical volumes
+### 5. Creating logical volumes
 
-  > # Create swap volume sized ~1.5 of your ram size
+  Create swap volume sized ~1.5 of your ram size
   > lvcreate -L 12G -n swap vg
 
-  > # Create root volume with all remaining free space
+  Create root volume with all remaining free space
   > lvcreate -l 100%FREE -n root vg
 
-6. Create filesystems
+### 6. Create filesystems
 
-  > # $BOOT_PARTITION = EFI boot partition location
+  $BOOT_PARTITION = EFI boot partition location
   > mkfs.vfat -n boot $BOOT_PARTITION
 
-  > # ext4 for root partition
+  ext4 for root partition
   > mkfs.ext4 -L nixos /dev/vg/root
 
-  > # swap for swap partition
+  swap for swap partition
   > mkswap -L swap /dev/vg/swap
 
-  > # turn on the swap
+  turn on the swap
   > swapon /dev/vg/swap
 
-7. Mount filesystems
+### 7. Mount filesystems
 
   > mount /dev/vg/root /mnt
   > mkdir /mnt/boot
   > mount $BOOT_PARTITION /mnt/boot
 
-8. Setup initial nixos configurations
+### 8. Setup initial nixos configurations
 
-  > # generate initial nixos config
+  generate initial nixos config
   > nixos-generate-config --root /mnt
 
   > vim /mnt/etc/nixos/configuration.nix
@@ -154,14 +154,14 @@
   }
   ```
 
-9. Grand finale!
+### 9. Grand finale!
 
   > nixos-install
   > reboot
 
 ## Environment setup
 
-  > # Login to user
+  Login to user
   > pwd # /home/max
   > git clone https://github.com/MaxOw/dotfiles
   > dotfiles/setup.sh
@@ -174,10 +174,10 @@
 
 ## Basic Env installs
 
-  > # It would be cool if user environments could also be setup
-  > # declaratively...
+  It would be cool if user environments could also be setup
+  declaratively...
 
-  > # add nixpkgs channel
+  add nixpkgs channel
   > nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs
   > nix-channel --update
 
