@@ -34,6 +34,8 @@ in {
   #   127.0.0.1 local.1bios.co
   # '';
 
+  sound.enable = true;
+
   # Select internationalisation properties.
   i18n.consoleUseXkbConfig = true;
   i18n.consoleColors = solarized.consoleColors;
