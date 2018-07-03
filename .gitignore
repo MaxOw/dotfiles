@@ -2,3 +2,6 @@ dist
 result
 *.[ao]
 *.hi
+
+xmonad/xmonad.state
+xmonad/xmonad.errors

@@ -1,0 +1,19 @@
+[user]
+	name = Maksymilian Owsianny
+	email = Maksymilian.Owsianny@gmail.com
+[core]
+	editor = nvim
+	askpass = 
+[color]
+	status = auto
+	branch = auto
+	diff = auto
+[http]
+	sslcainfo = /etc/ssl/certs/ca-certificates.crt
+[push]
+	default = current
+[alias]
+	lg = log --oneline -n5
+	ignore = update-index --skip-worktree
+	unignore = update-index --no-skip-worktree
+	ignored = !git ls-files -v | grep \"^S\"
