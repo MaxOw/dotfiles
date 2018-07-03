@@ -188,9 +188,15 @@
   > nix-env -iA nixos.ripgrep  
   > nix-env -iA nixos.qbittorrent  
   > nix-env -iA nixos.vlc  
-  > nix-env -iA nixos.wpa_gui  
+  > nix-env -iA nixos.wpa_supplicant_gui  
   > nix-env -iA nixos.xbacklight  
   > nix-env -iA nixos.xdotool  
+
+  Some other things:
+
+  mod-q to reload xmonad  
+  :PlugInstall in nvim to install plugins...  
+  mkdir -p .config/nvim/tmp/backup  
 
 # References
 

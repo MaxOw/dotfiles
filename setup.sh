@@ -21,3 +21,6 @@ ln -sv ${dotfiles}/haskeline ${home}/.haskeline
 
 mkdir -p ${home}/.config/dunst
 ln -sv ${dotfiles}/dunstrc ${home}/.config/dunst/dunstrc
+
+mkdir -p ${home}/.config/htop
+ln -sv ${dotfiles}/htop/htoprc ${home}/.config/htop/htoprc
