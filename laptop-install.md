@@ -182,14 +182,14 @@
   > nix-channel --update  
 
   > nix-env -iA nixos.htop  
-  > nix-env -iA nixos.firefox-esr  
+  > nix-env -iA nixpkgs.firefox-esr-52  
   > nix-env -iA nixos.fd  
   > nix-env -iA nixos.fzf  
   > nix-env -iA nixos.ripgrep  
   > nix-env -iA nixos.qbittorrent  
   > nix-env -iA nixos.vlc  
   > nix-env -iA nixos.wpa_supplicant_gui  
-  > nix-env -iA nixos.xbacklight  
+  > nix-env -iA nixos.xorg.xbacklight  
   > nix-env -iA nixos.xdotool  
 
   Some other things:
@@ -197,6 +197,8 @@
   mod-q to reload xmonad  
   :PlugInstall in nvim to install plugins...  
   mkdir -p .config/nvim/tmp/backup  
+
+  Addons to install in firefox: Vimperator, uBlock Origin
 
 # References
 

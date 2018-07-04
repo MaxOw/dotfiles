@@ -70,7 +70,7 @@ in {
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
@@ -177,6 +177,8 @@ in {
     createHome = true;
     isNormalUser = true;
     extraGroups = [ "wheel" ];
+    openssh.authorizedKeys.keys =
+      ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8WxqAzwGXUCZst2XYY0kc1D/AWcnsVyOZF4UrZnP8zbNP1ZSvL6g2GO93tqKZIOKHLy6avjEbMXWTyZN859kmbINZx/vdlUUKT/ujk1WUHAR/2AwZUnh4g9ZYhoFTx0t64C6N6u5gnxn4LQg1Nb1su+fz3aaGjOTtS8k1mRL0/jUsqUKYx+eNTrCXjJqPC0A4+NL90UNce/zqsA2KHU/9IhG5b7qJt2TkObbROHlitvZgqGq9qpdfhXfeD7UaJcdL6JjrRohmi98MVyR/Z5YhYoOfw+FG2zCSkgDgGVd3Kz+ZiSF6JSjgQLltshgWyXPtO8lf1XKvbMMFOgIQIHGJ max@raptor"];
     uid = 1337;
   };
 
