@@ -167,7 +167,7 @@
   > dotfiles/setup.sh  
 
   > su # run as root  
-  > dotfiles/root-setup.sh  
+  > dotfiles/root-setup.sh machine_name
   > nixos-rebuild switch  
 
   > reboot
