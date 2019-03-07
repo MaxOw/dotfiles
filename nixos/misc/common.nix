@@ -20,6 +20,11 @@ in {
   #   127.0.0.1 local.1bios.co
   # '';
 
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  services.avahi.publish.enable = true;
+  services.avahi.publish.addresses = true;
+
   sound.enable = true;
 
   # Select internationalisation properties.

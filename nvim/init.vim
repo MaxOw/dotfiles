@@ -149,6 +149,10 @@ augroup fzf_terminal
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup end
 
+" Completion
+
+inoremap æ <C-n>
+
 
 " Searching and movement --------------------------------------------------
 
