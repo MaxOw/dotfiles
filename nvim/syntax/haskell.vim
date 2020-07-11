@@ -55,6 +55,8 @@ syn match haskellChar "'[^'\\]'\|'\\.'\|'\\u[0-9a-fA-F]\{4}'"
 syn match haskellType "\(\<[A-Z][a-zA-Z0-9_]*\>\|'\<[A-Z][a-zA-Z0-9_]*\>\)'*"
 syn match haskellImportName "\(\<[A-Z][a-zA-Z0-9_]*\>\|'\<[A-Z][a-zA-Z0-9_]*\>\)'*" contained
 
+syn match haskellFieldPrefix "ff#"
+
 syn match haskellTopLevelDecl
   \ "^[_a-z][a-zA-z0-9_]*'*,\?\n*\s*::"
   \ contains=
@@ -124,6 +126,7 @@ highlight def link haskellPragma SpecialComment
 highlight def link haskellString String
 highlight def link haskellChar String
 highlight def link haskellBacktick Operator
+highlight def link haskellFieldPrefix Operator
 
 if exists('g:haskell_enable_quantification') && g:haskell_enable_quantification == 1
   highlight def link haskellForall Operator

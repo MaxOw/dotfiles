@@ -5,6 +5,8 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'neovimhaskell/haskell-vim'
 
 "Plug 'ctrlpvim/ctrlp.vim'
+Plug 'joom/latex-unicoder.vim'
+"Plug 'vmchale/dhall-vim'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'scrooloose/nerdcommenter'
@@ -12,6 +14,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
 Plug 'ntpeters/vim-better-whitespace'
 
+Plug 'ervandew/supertab'
+"Plug 'valloric/youcompleteme'
 
 Plug 'lnl7/vim-nix'
 
@@ -24,6 +28,8 @@ Plug 'ngmy/vim-rubocop'
 "Plug 'floobits/floobits-neovim'
 "Plug 'l04m33/vim-skuld'
 call plug#end()
+
+vnoremap ,l :<C-u>call unicoder#selection()<CR>
 
 " Leader
 let mapleader = ","
@@ -131,12 +137,16 @@ set wildignore+=*.ibc                            " Idris crap
 set wildignore+=*.dyn_hi,*.dyn_o
 set wildignore+=*/dist/*
 
+nnoremap ò <C-r>
+
 " FZF config
 nnoremap æ :Files<CR>
 nnoremap ç :Files ~<CR>
 nnoremap â :Buffers<CR>
 nnoremap í :Lines<CR>
 nnoremap á :Rg<space>
+nnoremap § :History:<CR>
+nnoremap ¯ :History/<CR>
 nnoremap <space>f :Files<CR>
 nnoremap <space>g :Files ~<CR>
 nnoremap <space>b :Buffers<CR>
@@ -288,6 +298,7 @@ autocmd FileType glsl   setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType nix    setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType vim    setlocal ts=2 sts=2 sw=2 expandtab
 autocmd FileType ruby   setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType dhall  setlocal ts=2 sts=2 sw=2 expandtab
 
 autocmd FileType javascript        setlocal ts=2 sts=2 sw=2
 autocmd FileType c,html            setlocal ts=2 sts=2 sw=2

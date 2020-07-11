@@ -16,6 +16,11 @@ in {
     "8.8.8.8"
     "8.8.4.4"
   ];
+
+  nix.binaryCaches = [ "https://cache.nixos.org" "https://cache.dhall-lang.org" ];
+  nix.binaryCachePublicKeys =
+    [ "cache.dhall-lang.org:I9/H18WHd60olG5GsIjolp7CtepSgJmM2CsO813VTmM=" ];
+
   # networking.extraHosts = ''
   #   127.0.0.1 local.1bios.co
   # '';
