@@ -16,7 +16,7 @@
     displayManager.auto.enable = true;
     displayManager.auto.user = "max";
     displayManager.sessionCommands = ''
-      ${pkgs.xorg.xset}/bin/xset r rate 250 15
+      ${pkgs.xorg.xset}/bin/xset r rate 220 25
       ${pkgs.xorg.xbacklight}/bin/xbacklight -set 50
     '';
   };

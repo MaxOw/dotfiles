@@ -136,12 +136,14 @@ nnoremap æ :Files<CR>
 nnoremap ç :Files ~<CR>
 nnoremap â :Buffers<CR>
 nnoremap í :Lines<CR>
-nnoremap á :Ag<space>
+nnoremap á :Rg<space>
 nnoremap <space>f :Files<CR>
 nnoremap <space>g :Files ~<CR>
 nnoremap <space>b :Buffers<CR>
 nnoremap <space>m :Lines<CR>
-nnoremap <space>a :Ag<space>
+nnoremap <space>a :Rg<space>
+nnoremap <space>: :History:<CR>
+nnoremap <space>/ :History/<CR>
 augroup fzf_terminal
   autocmd!
   autocmd WinEnter,BufEnter fzf tnoremap <Esc> <C-\><C-n>:q<CR>

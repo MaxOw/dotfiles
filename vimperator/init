@@ -5,6 +5,7 @@ nnoremap J gT
 nnoremap K gt
 nnoremap <C-A-j> :tabm! -1<CR>
 nnoremap <C-A-k> :tabm! +1<CR>
+nnoremap ss :viewsource<CR>
 set tabnumbers
 set hintchars=jfkdls;ahgurieow
 set runtimepath=/home/max/.vimperator
@@ -15,6 +16,8 @@ set gui=nonavigation
 nnoremap ,r :source! /home/max/.vimperatorrc<CR>
 nnoremap ,t :js toggle_tabbar()<CR>
 nnoremap ,s :js save_open_tabs()<CR>
+"nnoremap ,r :emenu View.Enter Reader View<CR>
+nnoremap  R :emenu View.Enter Reader View<CR>
 
 set hinttags="//input[not(@type='hidden' or @disabled)] | //xhtml:input[not(@type='hidden')] | //a[string(@href)] | //xhtml:a[string(@href)] | //area | //xhtml:area | //iframe | //xhtml:iframe | //textarea | //xhtml:textarea | //button | //xhtml:button | //select | //xhtml:select | //*[@onclick or @onmouseover or @onmousedown or @onmouseup or @oncommand or @role='link'or @role='button' or @role='checkbox' or @role='combobox' or @role='listbox' or @role='listitem' or @role='menuitem' or @role='menuitemcheckbox' or @role='menuitemradio' or @role='option' or @role='radio' or @role='scrollbar' or @role='slider' or @role='spinbutton' or @role='tab' or @role='textbox' or @role='treeitem' or @tabindex]"
 
