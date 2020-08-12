@@ -7,8 +7,9 @@ call plug#begin('~/.config/nvim/plugged')
 "Plug 'ctrlpvim/ctrlp.vim'
 Plug 'joom/latex-unicoder.vim'
 "Plug 'vmchale/dhall-vim'
+
 Plug 'tpope/vim-surround'
-Plug 'itchyny/lightline.vim'
+Plug 'itchyny/lightline.vim'    " Pretty status line
 Plug 'scrooloose/nerdcommenter'
 Plug 'easymotion/vim-easymotion'
 Plug 'godlygeek/tabular'
@@ -22,8 +23,7 @@ Plug 'lnl7/vim-nix'
 Plug 'junegunn/fzf'
 Plug 'junegunn/fzf.vim'
 
-Plug 'ngmy/vim-rubocop'
-
+"Plug 'ngmy/vim-rubocop'
 "Plug 'elzr/vim-json'
 "Plug 'floobits/floobits-neovim'
 "Plug 'l04m33/vim-skuld'
@@ -35,6 +35,7 @@ vnoremap ,l :<C-u>call unicoder#selection()<CR>
 let mapleader = ","
 let maplocalleader = "\\"
 " nmap , <space>
+"
 
 " Comments
 let g:NERDSpaceDelims = 1
@@ -196,7 +197,7 @@ nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Don't move on *
-nnoremap * *<c-o>
+nnoremap * *N
 
 " Insert line
 nmap <leader>L o<Esc>HD80I-<Esc>I<Esc>

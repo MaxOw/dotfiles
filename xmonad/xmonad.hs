@@ -11,6 +11,8 @@ import qualified Data.Map as M
 import Data.Map (Map)
 import Data.Maybe (fromMaybe)
 
+-- mod-q to reload
+
 workspaceNames =
   [ "0:Chat", "1:Dbg", "2:Pix"
   , "3:Docs", "4:Dev", "5:Web"
@@ -18,22 +20,22 @@ workspaceNames =
   ]
 
 data WorkspacePos = WorkspacePos Int Int deriving Typeable
-newtype TouchpadEnabled = TouchpadEnabled Bool
+-- newtype TouchpadEnabled = TouchpadEnabled Bool
 
 instance ExtensionClass WorkspacePos where
     initialValue = WorkspacePos 1 1
 
-instance ExtensionClass TouchpadEnabled where
-    initialValue = TouchpadEnabled True
+-- instance ExtensionClass TouchpadEnabled where
+    -- initialValue = TouchpadEnabled True
 
-toggleTouchpad = do
-    TouchpadEnabled x <- XS.get
-    XS.modify $ \(TouchpadEnabled x) -> TouchpadEnabled $ not x
-    spawn "notify-send toggle-touchpad -t 1000"
-    spawn "xdotool mousemove 0 2000" -- Move mouse to bottom-left corner
-    case x of
-        True  -> spawn "xinput --disable 12"
-        False -> spawn "xinput --enable  12"
+toggleTouchpad = spawn "toggle-touchpad"
+--  TouchpadEnabled x <- XS.get
+--  XS.modify $ \(TouchpadEnabled x) -> TouchpadEnabled $ not x
+--  spawn "notify-send toggle-touchpad -t 1000"
+--  spawn "xdotool mousemove 0 2000" -- Move mouse to bottom-left corner
+--  case x of
+--      True  -> spawn "xinput --disable 12"
+--      False -> spawn "xinput --enable  12"
 
 -- Todo: Fix when someonelse changes workspace
 workspaceAction f d = do

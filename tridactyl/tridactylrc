@@ -1,0 +1,34 @@
+" vim: set filetype=vim
+
+" This line will revert any settings when removing it from here. (What you expect)
+sanitise tridactyllocal tridactylsync
+
+colors mytheme
+
+set hintuppercase false
+set allowautofocus false
+set newtab about:blank
+
+" Automatically change from mobile to desctop version of wikipedia
+autocmd DocStart wikipedia.org urlmodify -t .m. .
+
+bind ZZ !s pkill -f firefox
+
+bind <CA-j> tabmove -1
+bind <CA-k> tabmove +1
+
+bind ,r source ~/.config/tridactyl/tridactylrc
+
+bind J tabprev
+bind K tabnext
+
+bind / fillcmdline find
+bind ,/ nohlsearch
+" bind <space>/ nohlsearch
+bind n findnext 1
+bind N findnext -1
+" bind p findnext -1
+
+bind j scrollline 5
+bind k scrollline -5
+

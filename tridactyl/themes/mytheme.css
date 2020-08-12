@@ -1,0 +1,19 @@
+
+tr.HistoryCompletionOption {
+  display: flex;
+  width: 100%;
+}
+
+tr.HistoryCompletionOption > td.title {
+  order: 2;
+  width: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
+}
+
+tr.HistoryCompletionOption > td.content {
+  order: 1;
+  width: 100%;
+  flex-shrink: 0;
+  flex-grow: 1;
+}

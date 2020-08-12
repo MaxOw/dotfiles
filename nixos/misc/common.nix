@@ -10,16 +10,16 @@ in {
   # Network configuration
   networking.wireless.enable = true;  # Enables wireless via wpa_supplicant.
   #networking.wireless.userControlled.enable = true; # Allow wpa_cli & wpa_gui
-  networking.dnsSingleRequest = true;
+  networking.resolvconf.dnsSingleRequest = true;
   networking.enableIPv6 = false;
   networking.nameservers = [
     "8.8.8.8"
     "8.8.4.4"
   ];
 
-  nix.binaryCaches = [ "https://cache.nixos.org" "https://cache.dhall-lang.org" ];
-  nix.binaryCachePublicKeys =
-    [ "cache.dhall-lang.org:I9/H18WHd60olG5GsIjolp7CtepSgJmM2CsO813VTmM=" ];
+  nix.binaryCaches = [ "https://cache.nixos.org" ]; # "https://cache.dhall-lang.org" ];
+  # nix.binaryCachePublicKeys =
+  # [ "cache.dhall-lang.org:I9/H18WHd60olG5GsIjolp7CtepSgJmM2CsO813VTmM=" ];
 
   # networking.extraHosts = ''
   #   127.0.0.1 local.1bios.co
@@ -31,10 +31,11 @@ in {
   # services.avahi.publish.addresses = true;
 
   sound.enable = true;
+  hardware.pulseaudio.enable = true;
 
   # Select internationalisation properties.
-  i18n.consoleUseXkbConfig = true;
-  i18n.consoleColors = solarized.consoleColors;
+  console.useXkbConfig = true;
+  console.colors = solarized.consoleColors;
 
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
@@ -46,6 +47,8 @@ in {
     dmenu
   ];
   nixpkgs.config.allowUnfree = true;
+
+  programs.iftop.enable = true;
 
   environment.etc."inputrc".source = lib.mkForce ./inputrc;
 
@@ -90,17 +93,19 @@ in {
     };
   };
 
-  systemd.user.services.unclutter = {
-    enable = true;
-    description = "Hide mouse when idle";
-    wantedBy = [ "default.target" ];
-    path = [ pkgs.unclutter ];
-    serviceConfig = {
-      Restart = "always";
-      RestartSec = 2;
-      ExecStart = "${pkgs.unclutter}/bin/unclutter -root -idle 1";
-    };
-  };
+# Unclutter breaks xmonad/firefox focus
+
+# systemd.user.services.unclutter-xfixes = {
+#   enable = true;
+#   description = "Hide mouse when idle";
+#   wantedBy = [ "default.target" ];
+#   path = [ pkgs.unclutter-xfixes ];
+#   serviceConfig = {
+#     Restart = "always";
+#     RestartSec = 2;
+#     ExecStart = "${pkgs.unclutter}/bin/unclutter -root -idle 1";
+#   };
+# };
 
   # This doesn't seem to work anyway
   #services.udev.path = [ pkgs.libnotify ];
@@ -121,7 +126,7 @@ in {
     home = "/home/max";
     createHome = true;
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "audio" ];
     openssh.authorizedKeys.keys = [
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC8WxqAzwGXUCZst2XYY0kc1D/AWcnsVyOZF4UrZnP8zbNP1ZSvL6g2GO93tqKZIOKHLy6avjEbMXWTyZN859kmbINZx/vdlUUKT/ujk1WUHAR/2AwZUnh4g9ZYhoFTx0t64C6N6u5gnxn4LQg1Nb1su+fz3aaGjOTtS8k1mRL0/jUsqUKYx+eNTrCXjJqPC0A4+NL90UNce/zqsA2KHU/9IhG5b7qJt2TkObbROHlitvZgqGq9qpdfhXfeD7UaJcdL6JjrRohmi98MVyR/Z5YhYoOfw+FG2zCSkgDgGVd3Kz+ZiSF6JSjgQLltshgWyXPtO8lf1XKvbMMFOgIQIHGJ max@raptor"
       "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5g/5HLz4lqFEZm+dW1cVVFgPg038U6Z1h/mm4vS8ZuI9hyww4g/kDbeAuzpQJzhpU6+mtb8aDjpVc9SeaOndFvqTCPH0v3RTn0I7BOA3g+qCSIABvbDKq1IdwonXOGNr7f+FmLb2Q5P1u+yghB4q3w4z3mpO0y2OIq3wJBt/mwsWogBQuMZyYpc8fYm5+AlwaDteySexW2cjAdrDPO+HnP4j+pm42CjMJ7rcKPra7q+O8bJt9JD3hjLK4A5qyuILxpnaO37ePf84AypYGM3EuOld/QkxR6NPqsVSzkX2ReDxDe/gvalugwwqrisBMBsUTCrd2RncffF+tSFcXqZIJ max@felis"

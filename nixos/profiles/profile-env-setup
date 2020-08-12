@@ -1,0 +1,2 @@
+
+nix-env -f ~/dotfiles/nixos/profiles/default.nix --set
