@@ -1,3 +1,8 @@
+/* Set fullscreen transition time to 0ms */
+#navigator-toolbox[fullscreenShouldAnimate] {
+  transition: 0ms !important;
+}
+
 statuspanel[type="overLink"],
 #statuspanel[type="overLink"] {
   right: 200px;

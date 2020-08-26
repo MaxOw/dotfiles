@@ -17,10 +17,20 @@ bind ZZ !s pkill -f firefox
 bind <CA-j> tabmove -1
 bind <CA-k> tabmove +1
 
+command resource source ~/.config/tridactyl/tridactylrc
 bind ,r source ~/.config/tridactyl/tridactylrc
+
+" To bypass paywalls, works in some places...
+" TODO: fill this with url from link hint.
+bind ,p winopen -private duckduckgo.com
+
+" Toggle fullscreen
+bind ,F fullscreen
 
 bind J tabprev
 bind K tabnext
+
+bind t fillcmdline tabopen -b
 
 bind / fillcmdline find
 bind ,/ nohlsearch
@@ -29,6 +39,6 @@ bind n findnext 1
 bind N findnext -1
 " bind p findnext -1
 
-bind j scrollline 5
-bind k scrollline -5
+bind j scrollline 3
+bind k scrollline -3
 
