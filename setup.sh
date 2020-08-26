@@ -6,8 +6,9 @@ firefox_profile=$(ls -d1 ${home}/.mozilla/firefox/*/ | grep default)
 
 if [ $(echo $firefox_profile | wc -l) = "1" ]; then
   echo Firefox profile: $firefox_profile
-  ln -sv ${dotfiles}/firefox/user.js ${firefox_profile}/user.js
-  ln -sv ${dotfiles}/firefox/userChrome.css ${firefox_profile}/chrome/userChrome.css
+  ln -sv ${dotfiles}/firefox/user.js ${firefox_profile}user.js
+  mkdir -p ${firefox_profile}chrome
+  ln -sv ${dotfiles}/firefox/userChrome.css ${firefox_profile}chrome/userChrome.css
 else
   echo There is no one default firefox profile. Select one by hand.
 fi
@@ -27,7 +28,7 @@ ln -sv ${dotfiles}/bashrc ${home}/.bashrc
 
 ln -sv ${dotfiles}/haskeline ${home}/.haskeline
 
-ln -sv ${dotfiles}/tridactyl/ ${home}/.config/tridactyl
+ln -svn ${dotfiles}/tridactyl ${home}/.config/tridactyl
 
 # mkdir -p .config/alacritty
 # ln -sv ${dotfiles}/alacritty ${home}/.config/alacritty
